@@ -4,9 +4,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AutoCompleteModule } from "primeng/autocomplete";
+import { RafflesComponent } from 'src/raffles-module/raffles-module.component';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    RafflesComponent
   ],
   imports: [
     BrowserModule,
