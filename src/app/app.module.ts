@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { AutoCompleteModule } from "primeng/autocomplete";
 import { RafflesComponent } from 'src/raffles-module/raffles-module.component';
 import { MenuComponent } from 'src/menuComponente-module/menu-component-module.component';
+import { InputTextModule } from "primeng/inputtext";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -15,7 +17,8 @@ import { MenuComponent } from 'src/menuComponente-module/menu-component-module.c
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AutoCompleteModule
+    AutoCompleteModule,
+    InputTextModule
   ],
   providers: [],
   bootstrap: [AppComponent]
