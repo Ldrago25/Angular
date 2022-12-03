@@ -4,7 +4,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-raffles',
-  templateUrl: './raffles-module.component.html'
+  templateUrl: './raffles-module.component.html',
+  styleUrls: ['./raffles-module.component.css']
 })
 export class RafflesComponent implements OnInit {
 
