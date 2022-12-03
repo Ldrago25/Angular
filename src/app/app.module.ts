@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AutoCompleteModule } from 'primeng/autocomplete';
@@ -20,8 +20,8 @@ import {MenuModule} from 'primeng/menu';
     InputTextModule,
     CardModule,
     InputTextareaModule,
-    MenuModule
-    
+    MenuModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
