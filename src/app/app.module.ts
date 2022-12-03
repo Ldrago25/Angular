@@ -9,6 +9,7 @@ import { MenuComponent } from 'src/menuComponente-module/menu-component-module.c
 import { InputTextModule } from 'primeng/inputtext';
 import { CardModule } from 'primeng/card';
 import { InputTextareaModule } from 'primeng/inputtextarea';
+import {MenuModule} from 'primeng/menu';
 
 @NgModule({
   declarations: [AppComponent, RafflesComponent, MenuComponent],
@@ -19,6 +20,8 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
     InputTextModule,
     CardModule,
     InputTextareaModule,
+    MenuModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent],
