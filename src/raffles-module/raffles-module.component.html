@@ -1,3 +1,28 @@
-<div class="card">
-    <input pInputText />
+<div class="contenedor">
+  <div class="card">
+    <p-card>
+      <section class="section-one">
+        <div class="col">
+          <div class="flex flex-row align-items-center">
+            <label class="mr-2" for="name">Nome do sorteio</label>
+            <input
+              name="name"
+              type="text"
+              placeholder="Digite o nome do sorteio"
+              pInputText
+            />
+          </div>
+          <div class="flex flex-row align-items-center mt-2">
+            <label class="mr-2" for="description">Descrição</label>
+            <textarea
+              name="description"
+              placeholder="Escrever uma descrição"
+              pInputTextarea
+            ></textarea>
+          </div>
+        </div>
+        <div class="col"></div>
+      </section>
+    </p-card>
+  </div>
 </div>
