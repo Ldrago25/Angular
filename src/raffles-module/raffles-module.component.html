@@ -3,25 +3,74 @@
     <p-card>
       <section class="section-one">
         <div class="col">
-          <div class="flex flex-row align-items-center">
-            <label class="mr-2" for="name">Nome do sorteio</label>
-            <input
-              name="name"
-              type="text"
-              placeholder="Digite o nome do sorteio"
-              pInputText
-            />
+          <div class="w-full image-select">
+            <button
+              pButton
+              type="button"
+              class="boton-add"
+              icon="pi pi-image"
+              label="Adicionar imagem"
+            ></button>
           </div>
-          <div class="flex flex-row align-items-center mt-2">
-            <label class="mr-2" for="description">Descrição</label>
-            <textarea
-              name="description"
-              placeholder="Escrever uma descrição"
-              pInputTextarea
-            ></textarea>
+          <div class="flex flex-row align-items-center mt-5 mb-3">
+            <span class="p-float-label w-full">
+              <input class="w-full" name="name" type="text" pInputText />
+              <label for="name">Nome do sorteio</label></span
+            >
           </div>
         </div>
-        <div class="col"></div>
+        <div class="col">
+          <div class="flex flex-row align-items-center">
+            <span class="p-float-label w-full">
+              <p-inputNumber
+                class="w-full"
+                styleClass="w-full"
+                name="price"
+                mode="currency"
+                [showButtons]="true"
+                currency="BRL"
+              ></p-inputNumber>
+              <label for="price">Preço do bilhete</label>
+            </span>
+          </div>
+          <div class="flex flex-row align-items-center mt-5">
+            <span class="p-float-label w-full">
+              <p-inputNumber
+                class="w-full"
+                styleClass="w-full"
+                mode="decimal"
+                [showButtons]="true"
+                name="numberTickets"
+                [min]="1"
+                [max]="10000"
+              >
+              </p-inputNumber>
+              <label for="numberTickets">Número de bilhetes</label>
+            </span>
+          </div>
+          <div class="flex flex-row align-items-center mt-5">
+            <span class="p-float-label w-full">
+              <p-calendar
+                class="w-full"
+                styleClass="w-full"
+                [showIcon]="true"
+                name="date"
+              ></p-calendar>
+              <label for="date">Data do sorteio</label>
+            </span>
+          </div>
+          <div class="flex flex-row align-items-center mt-5">
+            <span class="p-float-label w-full">
+              <textarea
+                name="description"
+                [rows]="7"
+                class="w-full h-full"
+                pInputTextarea
+              ></textarea>
+              <label for="description">Descrição</label>
+            </span>
+          </div>
+        </div>
       </section>
     </p-card>
   </div>

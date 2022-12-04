@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AutoCompleteModule } from 'primeng/autocomplete';
@@ -9,7 +9,9 @@ import { MenuComponent } from 'src/menuComponente-module/menu-component-module.c
 import { InputTextModule } from 'primeng/inputtext';
 import { CardModule } from 'primeng/card';
 import { InputTextareaModule } from 'primeng/inputtextarea';
-import {MenuModule} from 'primeng/menu';
+import { MenuModule } from 'primeng/menu';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { CalendarModule } from 'primeng/calendar';
 
 @NgModule({
   declarations: [AppComponent, RafflesComponent, MenuComponent],
@@ -21,7 +23,9 @@ import {MenuModule} from 'primeng/menu';
     CardModule,
     InputTextareaModule,
     MenuModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    InputNumberModule,
+    CalendarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
