@@ -12,12 +12,15 @@ import {MenuItem} from 'primeng/api';
 export class MenuComponent implements OnInit {
 
   items: MenuItem[]=[
-    {label: 'New', icon: 'pi pi-refresh',command: () => {
+    {label: 'Sorteios', icon: 'pi pi-ticket',command: () => {
       this.update2();
   }},
-    {label: 'Open', icon: 'pi pi-times',command: () => {
+    {label: 'Compradores', icon: 'pi pi-users',command: () => {
       this.update1();
   }},
+  {label: 'Fechar Sessão', icon: 'pi pi-sign-in',command: () => {
+    this.update3();
+}},
   ];
 
   constructor() { }
@@ -26,6 +29,7 @@ export class MenuComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  update3(){}
   update2(){}
   update1(){}
 }
