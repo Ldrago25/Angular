@@ -12,6 +12,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { MenuModule } from 'primeng/menu';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { CalendarModule } from 'primeng/calendar';
+import { TableModule } from 'primeng/table';
 
 @NgModule({
   declarations: [AppComponent, RafflesComponent, MenuComponent],
@@ -26,6 +27,7 @@ import { CalendarModule } from 'primeng/calendar';
     BrowserAnimationsModule,
     InputNumberModule,
     CalendarModule,
+    TableModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
