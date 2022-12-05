@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { RafflesComponent } from 'src/raffles-module/raffles-module.component';
+import { RafflesUserComponent } from 'src/raffles-user-module/raffles-user-module.component';
 import { ParticipantComponent } from 'src/participants-module/participants-module.component';
 import { MenuComponent } from 'src/menuComponente-module/menu-component-module.component';
 import { InputTextModule } from 'primeng/inputtext';
@@ -16,7 +17,13 @@ import { CalendarModule } from 'primeng/calendar';
 import { TableModule } from 'primeng/table';
 
 @NgModule({
-  declarations: [AppComponent, RafflesComponent, ParticipantComponent, MenuComponent],
+  declarations: [
+    AppComponent,
+    RafflesComponent,
+    ParticipantComponent,
+    RafflesUserComponent,
+    MenuComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
