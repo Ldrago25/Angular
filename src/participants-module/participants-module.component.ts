@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Data, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
-interface Raffle {
+interface Participant {
   name: string;
   price: number;
   tickets: number;
@@ -10,9 +10,9 @@ interface Raffle {
 }
 
 @Component({
-  selector: 'app-raffles',
-  templateUrl: './raffles-module.component.html',
-  styleUrls: ['./raffles-module.component.css'],
+  selector: 'app-participants',
+  templateUrl: './participants-module.component.html',
+  styleUrls: ['./participants-module.component.css'],
   styles: [
     `
       :host ::ng-deep table {
@@ -21,13 +21,13 @@ interface Raffle {
     `,
   ],
 })
-export class RafflesComponent implements OnInit {
-  raffles: Raffle[] = [];
+export class ParticipantComponent implements OnInit {
+  participants: Participant[] = [];
 
   constructor() {}
 
   ngOnInit(): void {
-    this.raffles = [
+    this.participants = [
       {
         name: 'Rifa de moto',
         price: 200,

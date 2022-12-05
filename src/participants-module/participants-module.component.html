@@ -1,0 +1,66 @@
+<div class="contenedor">
+  <div class="card">
+    <p-card>
+      <p-table
+        #dt
+        [value]="participants"
+        [tableStyle]="{ 'min-width': '50rem' }"
+        dataKey="id"
+        [globalFilterFields]="['name', 'price', 'tickets', 'date']"
+        styleClass="p-datatable-customers"
+        [rowHover]="true"
+        [rows]="5"
+        [paginator]="true"
+        [filterDelay]="0"
+      >
+        <ng-template pTemplate="caption">
+          <div
+            class="flex flex-row justify-content-between align-items-center md:flex-row md:justify-content-between table-header"
+          >
+            <div
+              class="flex flex-row justify-content-right align-items-center w-30 item"
+            >
+              <span class="p-input-icon-left w-full">
+                <i class="pi pi-search"></i>
+                <input
+                  type="text"
+                  class="w-full"
+                  (input)="dt.filterGlobal($event.target.value, 'contains')"
+                  placeholder="Buscar"
+                  pInputText
+                />
+              </span>
+            </div>
+          </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Name</th>
+            <th>Image</th>
+            <th>Price</th>
+            <th>Tickets</th>
+            <th>Date</th>
+          </tr>
+        </ng-template>
+        <ng-template
+          pTemplate="body"
+          let-participant
+          let-columns="participants"
+        >
+          <tr>
+            <td>{{ participant.name }}</td>
+            <td>
+              <img
+                style="height: 30px; width: 50px"
+                src="../assets/images/no-image.jpg"
+              />
+            </td>
+            <td>{{ participant.price | currency : "BRL" }}</td>
+            <td>{{ participant.tickets }}</td>
+            <td>{{ participant.date }}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </p-card>
+  </div>
+</div>

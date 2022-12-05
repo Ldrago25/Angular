@@ -72,63 +72,72 @@
           </div>
         </div>
       </section>
+      <div class="flex flex-row justify-content-end mt-5 mr-2">
+        <button pButton label="Criar sorteio"></button>
+      </div>
     </p-card>
   </div>
 </div>
 
 <div class="contenedor">
-  <p-card>
-    <p-table
-      #dt
-      [value]="raffles"
-      [tableStyle]="{ 'min-width': '50rem' }"
-      dataKey="id"
-      [globalFilterFields]="['name', 'price', 'tickets', 'date']"
-      styleClass="p-datatable-customers"
-      [rowHover]="true"
-      [rows]="5"
-      ngClass="table"
-      [paginator]="true"
-      [filterDelay]="0"
-    >
-      <ng-template pTemplate="caption">
-        <div
-          class="flex flex-row justify-content-between align-items-center md:flex-row md:justify-content-between table-header"
-        >
+  <div class="card">
+    <p-card>
+      <p-table
+        #dt
+        [value]="raffles"
+        [tableStyle]="{ 'min-width': '50rem' }"
+        dataKey="id"
+        [globalFilterFields]="['name', 'price', 'tickets', 'date']"
+        styleClass="p-datatable-customers"
+        [rowHover]="true"
+        [rows]="5"
+        [paginator]="true"
+        [filterDelay]="0"
+      >
+        <ng-template pTemplate="caption">
           <div
-            class="flex flex-row justify-content-right align-items-center w-30 item"
+            class="flex flex-row justify-content-between align-items-center md:flex-row md:justify-content-between table-header"
           >
-            <span class="p-input-icon-left w-full">
-              <i class="pi pi-search"></i>
-              <input
-                type="text"
-                class="w-full"
-                (input)="dt.filterGlobal($event.target.value, 'contains')"
-                placeholder="Buscar"
-                pInputText
-              />
-            </span>
+            <div
+              class="flex flex-row justify-content-right align-items-center w-30 item"
+            >
+              <span class="p-input-icon-left w-full">
+                <i class="pi pi-search"></i>
+                <input
+                  type="text"
+                  class="w-full"
+                  (input)="dt.filterGlobal($event.target.value, 'contains')"
+                  placeholder="Buscar"
+                  pInputText
+                />
+              </span>
+            </div>
           </div>
-        </div>
-      </ng-template>
-      <ng-template pTemplate="header">
-        <tr>
-          <th>Name</th>
-          <th>Image</th>
-          <th>Price</th>
-          <th>Tickets</th>
-          <th>Date</th>
-        </tr>
-      </ng-template>
-      <ng-template pTemplate="body" let-raffles let-columns="raffles">
-        <tr>
-          <td>{{ raffles.name }}</td>
-          <td>Image</td>
-          <td>{{ raffles.price | currency : "BRL" }}</td>
-          <td>{{ raffles.tickets }}</td>
-          <td>{{ raffles.date }}</td>
-        </tr>
-      </ng-template>
-    </p-table>
-  </p-card>
+        </ng-template>
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Name</th>
+            <th>Image</th>
+            <th>Price</th>
+            <th>Tickets</th>
+            <th>Date</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-raffles let-columns="raffles">
+          <tr>
+            <td>{{ raffles.name }}</td>
+            <td>
+              <img
+                style="height: 30px; width: 50px"
+                src="../assets/images/no-image.jpg"
+              />
+            </td>
+            <td>{{ raffles.price | currency : "BRL" }}</td>
+            <td>{{ raffles.tickets }}</td>
+            <td>{{ raffles.date }}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </p-card>
+  </div>
 </div>
