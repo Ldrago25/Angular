@@ -35,11 +35,11 @@
         </ng-template>
         <ng-template pTemplate="header">
           <tr>
-            <th>Name</th>
-            <th>Image</th>
-            <th>Price</th>
-            <th>Tickets</th>
-            <th>Date</th>
+            <th>Nome</th>
+            <th>Sorteio</th>
+            <th>Número de bilhetes</th>
+            <th>Total pago</th>
+            <th>Data</th>
           </tr>
         </ng-template>
         <ng-template
@@ -49,14 +49,9 @@
         >
           <tr>
             <td>{{ participant.name }}</td>
-            <td>
-              <img
-                style="height: 30px; width: 50px"
-                src="../assets/images/no-image.jpg"
-              />
-            </td>
-            <td>{{ participant.price | currency : "BRL" }}</td>
-            <td>{{ participant.tickets }}</td>
+            <td>{{ participant.raffle }}</td>
+            <td>{{ participant.numTickets }}</td>
+            <td>{{ participant.totalPay | currency : "BRL" }}</td>
             <td>{{ participant.date }}</td>
           </tr>
         </ng-template>

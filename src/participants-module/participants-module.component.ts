@@ -4,8 +4,9 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 interface Participant {
   name: string;
-  price: number;
-  tickets: number;
+  raffle: string;
+  numTickets: number;
+  totalPay: number;
   date: string;
 }
 
@@ -29,33 +30,38 @@ export class ParticipantComponent implements OnInit {
   ngOnInit(): void {
     this.participants = [
       {
-        name: 'Rifa de moto',
-        price: 200,
-        tickets: 1000,
+        name: 'Pedro Rivera',
+        raffle: "Rifa de moto",
+        numTickets: 3,
+        totalPay: 500,
         date: new Date().toLocaleDateString('es'),
       },
       {
-        name: 'Rifa de carro',
-        price: 300,
-        tickets: 2000,
+        name: 'Pedro Rivera',
+        raffle: "Rifa de carro",
+        numTickets: 2,
+        totalPay: 700,
         date: new Date().toLocaleDateString('es'),
       },
       {
-        name: 'Rifa de telefono',
-        price: 500,
-        tickets: 7000,
+        name: 'Pedro Rivera',
+        raffle: "Rifa de casa",
+        numTickets: 1,
+        totalPay: 800,
         date: new Date().toLocaleDateString('es'),
       },
       {
-        name: 'Rifa de casa',
-        price: 800,
-        tickets: 10000,
+        name: 'Pedro Rivera',
+        raffle: "Rifa de apartamento",
+        numTickets: 4,
+        totalPay: 1000,
         date: new Date().toLocaleDateString('es'),
       },
       {
-        name: 'Rifa de apartamento',
-        price: 1000,
-        tickets: 10000,
+        name: 'Pedro Rivera',
+        raffle: "Rifa de telefono",
+        numTickets: 6,
+        totalPay: 300,
         date: new Date().toLocaleDateString('es'),
       },
     ];
