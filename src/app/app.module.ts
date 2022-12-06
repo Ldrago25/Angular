@@ -7,7 +7,7 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
 import { RafflesComponent } from 'src/raffles-module/raffles-module.component';
 import { RafflesUserComponent } from 'src/raffles-user-module/raffles-user-module.component';
 import { ParticipantComponent } from 'src/participants-module/participants-module.component';
-import { MenuComponent } from 'src/menuComponente-module/menu-component-module.component';
+import { MenuComponent } from 'src/menu-module/menu-component-module.component';
 import { InputTextModule } from 'primeng/inputtext';
 import { CardModule } from 'primeng/card';
 import { InputTextareaModule } from 'primeng/inputtextarea';

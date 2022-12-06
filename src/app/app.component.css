@@ -1,0 +1,10 @@
+.component {
+    margin-top: 100px;
+    margin-left: 200px;
+}
+
+@media (max-width: 1000px) {
+    .component {
+      margin-left: 0px;
+    }
+  }
