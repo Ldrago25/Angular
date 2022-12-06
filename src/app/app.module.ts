@@ -16,6 +16,8 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { CalendarModule } from 'primeng/calendar';
 import { TableModule } from 'primeng/table';
 import { PaginatorModule } from 'primeng/paginator';
+import { SplitButtonModule } from 'primeng/splitbutton';
+import { DropdownModule } from 'primeng/dropdown';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import { PaginatorModule } from 'primeng/paginator';
     CalendarModule,
     TableModule,
     PaginatorModule,
+    SplitButtonModule,
+    DropdownModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

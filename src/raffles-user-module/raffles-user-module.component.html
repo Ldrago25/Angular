@@ -39,12 +39,52 @@
 <div class="contenedor">
   <div class="card">
     <p-card>
-      <section class="section-tickets">
+      <div class="flex flex-row justify-content-between">
+        <h2>Selecione seus bilhetes</h2>
+        <div>
+          <label for="dropOpt">Ver: </label>
+          <p-dropdown
+            name="dropOpt"
+            [options]="['Todos', 'Disponível']"
+            class="ml-2 mr-3"
+          ></p-dropdown>
+          <button pButton label="Compre agora"></button>
+        </div>
+      </div>
+      <div>
+        <div class="flex flex-row align-items-center">
+          <h4>Custo total:</h4>
+          <p class="ml-2">{{ priceTotal | currency : "BRL" }}</p>
+        </div>
+
+        <h4>Bilhetes selecionados:</h4>
+        <p *ngIf="arraySelecteds.length == 0">Você ainda não selecionou nada</p>
+        <div class="flex">
+          <ng-container *ngFor="let ticketSelect of arraySelecteds">
+            <div
+              class="ticket-preview flex flex-row align-items-center justify-content-center mr-1"
+              (click)="noSelect(ticketSelect)"
+            >
+              <p style="color: white">{{ ticketSelect }}</p>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+      <section class="section-tickets mt-5">
         <ng-container *ngFor="let ticket of arrayTick">
           <div
             class="ticket flex flex-row align-items-center justify-content-center"
+            *ngIf="!findSelect(ticket)"
+            (click)="select(ticket)"
           >
-            <p>{{ ticket }}</p>
+            <p style="color: white">{{ ticket }}</p>
+          </div>
+          <div
+            class="ticket-select flex flex-row align-items-center justify-content-center"
+            *ngIf="findSelect(ticket)"
+            (click)="noSelect(ticket)"
+          >
+            <p style="color: white">{{ ticket }}</p>
           </div>
         </ng-container>
       </section>
