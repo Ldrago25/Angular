@@ -15,6 +15,7 @@ import { MenuModule } from 'primeng/menu';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { CalendarModule } from 'primeng/calendar';
 import { TableModule } from 'primeng/table';
+import { PaginatorModule } from 'primeng/paginator';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { TableModule } from 'primeng/table';
     InputNumberModule,
     CalendarModule,
     TableModule,
+    PaginatorModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

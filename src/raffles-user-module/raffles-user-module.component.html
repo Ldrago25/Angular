@@ -1,80 +1,60 @@
 <div class="contenedor">
-    <div class="card">
-      <p-card>
-        <section class="section-one">
-          <div class="col">
-            <div class="w-full image-select">
-              <button
-                pButton
-                type="button"
-                class="boton-add"
-                icon="pi pi-image"
-                label="Adicionar imagem"
-              ></button>
-            </div>
-            <div class="flex flex-row align-items-center mt-5 mb-3">
-              <span class="p-float-label w-full">
-                <input class="w-full" name="name" type="text" pInputText />
-                <label for="name">Nome do sorteio</label></span
-              >
-            </div>
+  <div class="card">
+    <p-card>
+      <section class="section-one">
+        <div class="col">
+          <div class="flex flex-row align-items-center">
+            <h2>Rifa de moto</h2>
           </div>
-          <div class="col">
-            <div class="flex flex-row align-items-center">
-              <span class="p-float-label w-full">
-                <p-inputNumber
-                  class="w-full"
-                  styleClass="w-full"
-                  name="price"
-                  mode="currency"
-                  [showButtons]="true"
-                  currency="BRL"
-                ></p-inputNumber>
-                <label for="price">Preço do bilhete</label>
-              </span>
-            </div>
-            <div class="flex flex-row align-items-center mt-5">
-              <span class="p-float-label w-full">
-                <p-inputNumber
-                  class="w-full"
-                  styleClass="w-full"
-                  mode="decimal"
-                  [showButtons]="true"
-                  name="numberTickets"
-                  [min]="1"
-                  [max]="10000"
-                >
-                </p-inputNumber>
-                <label for="numberTickets">Número de bilhetes</label>
-              </span>
-            </div>
-            <div class="flex flex-row align-items-center mt-5">
-              <span class="p-float-label w-full">
-                <p-calendar
-                  class="w-full"
-                  styleClass="w-full"
-                  [showIcon]="true"
-                  name="date"
-                ></p-calendar>
-                <label for="date">Data do sorteio</label>
-              </span>
-            </div>
-            <div class="flex flex-row align-items-center mt-5">
-              <span class="p-float-label w-full">
-                <textarea
-                  name="description"
-                  [rows]="7"
-                  class="w-full h-full"
-                  pInputTextarea
-                ></textarea>
-                <label for="description">Descrição</label>
-              </span>
-            </div>
-          </div>
-        </section>
-        <div class="flex flex-row justify-content-end mt-5 mr-2">
-          <button pButton label="Criar sorteio"></button>
+          <div class="w-full image-select"></div>
         </div>
-      </p-card>
-    </div>
+        <div class="col mt-6 ml-3">
+          <div>
+            <h4>Preço do bilhete:</h4>
+            <p>{{ price | currency : "BRL" }}</p>
+          </div>
+          <div>
+            <h4>Número de bilhetes:</h4>
+            <p>{{ cant }}</p>
+          </div>
+          <div>
+            <h4>Data do sorteio:</h4>
+            <p>15/12/2022</p>
+          </div>
+          <div>
+            <h4>Descrição:</h4>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem odit
+              nisi sed deleniti incidunt id! Dignissimos sit in illo veniam
+              dolores repellat, eos accusantium tenetur, molestias est deserunt.
+              Repellendus, maxime?
+            </p>
+          </div>
+        </div>
+      </section>
+    </p-card>
   </div>
+</div>
+
+<div class="contenedor">
+  <div class="card">
+    <p-card>
+      <section class="section-tickets">
+        <ng-container *ngFor="let ticket of arrayTick">
+          <div
+            class="ticket flex flex-row align-items-center justify-content-center"
+          >
+            <p>{{ ticket }}</p>
+          </div>
+        </ng-container>
+      </section>
+      <p-paginator
+        [rows]="50"
+        [totalRecords]="tickets.length"
+        [pageLinkSize]="2"
+        (onPageChange)="paginate($event)"
+      >
+      </p-paginator>
+    </p-card>
+  </div>
+</div>
