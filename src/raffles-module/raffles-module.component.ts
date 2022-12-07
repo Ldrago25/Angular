@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Data, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { AppComponent } from 'src/app/app.component';
 
 interface Raffle {
   name: string;
@@ -24,9 +25,11 @@ interface Raffle {
 export class RafflesComponent implements OnInit {
   raffles: Raffle[] = [];
 
-  constructor() {}
+  constructor(private app:AppComponent) {}
+
 
   ngOnInit(): void {
+    this.app.className='component'
     this.raffles = [
       {
         name: 'Rifa de moto',

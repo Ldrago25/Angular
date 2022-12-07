@@ -1,19 +1,14 @@
 <div class="contenedor">
-  <div class="card">
-    <p-card>
-      <section class="section-one">
-        <div class="col">
-          <div class="w-full image-select">
-            <button
-              pButton
-              type="button"
-              class="boton-add"
-              icon="pi pi-image"
-              label="Adicionar imagem"
-            ></button>
-          </div>
-          <div class="flex flex-row align-items-center mt-5 mb-3">
-            <span class="p-float-label w-full">
+    <div class="card">
+        <p-card>
+            <h3>Criar novo sorteio</h3>
+            <section class="section-one">
+                <div class="col">
+                    <div class="w-full image-select">
+                        <button pButton type="button" class="boton-add" icon="pi pi-image" label="Adicionar imagem"></button>
+                    </div>
+                    <div class="flex flex-row align-items-center mt-5 mb-3">
+                        <span class="p-float-label w-full">
               <input class="w-full" name="name" type="text" pInputText />
               <label for="name">Nome do sorteio</label></span
             >
@@ -32,9 +27,9 @@
               ></p-inputNumber>
               <label for="price">Preço do bilhete</label>
             </span>
-          </div>
-          <div class="flex flex-row align-items-center mt-5">
-            <span class="p-float-label w-full">
+                    </div>
+                    <div class="flex flex-row align-items-center mt-5">
+                        <span class="p-float-label w-full">
               <p-inputNumber
                 class="w-full"
                 styleClass="w-full"
@@ -47,9 +42,9 @@
               </p-inputNumber>
               <label for="numberTickets">Número de bilhetes</label>
             </span>
-          </div>
-          <div class="flex flex-row align-items-center mt-5">
-            <span class="p-float-label w-full">
+                    </div>
+                    <div class="flex flex-row align-items-center mt-5">
+                        <span class="p-float-label w-full">
               <p-calendar
                 class="w-full"
                 styleClass="w-full"
@@ -58,9 +53,9 @@
               ></p-calendar>
               <label for="date">Data do sorteio</label>
             </span>
-          </div>
-          <div class="flex flex-row align-items-center mt-5">
-            <span class="p-float-label w-full">
+                    </div>
+                    <div class="flex flex-row align-items-center mt-5">
+                        <span class="p-float-label w-full">
               <textarea
                 name="description"
                 [rows]="7"
@@ -69,40 +64,25 @@
               ></textarea>
               <label for="description">Descrição</label>
             </span>
-          </div>
-        </div>
-      </section>
-      <div class="flex flex-row justify-content-end mt-5 mr-2">
-        <button pButton label="Criar sorteio"></button>
-      </div>
-    </p-card>
-  </div>
+                    </div>
+                </div>
+            </section>
+            <div class="flex flex-row justify-content-end mt-5 mr-2">
+                <button pButton label="Criar sorteio"></button>
+            </div>
+        </p-card>
+    </div>
 </div>
 
 <div class="contenedor">
-  <div class="card">
-    <p-card>
-      <h3>Lista de sorteios</h3>
-      <p-table
-        #dt
-        [value]="raffles"
-        [tableStyle]="{ 'min-width': '50rem' }"
-        dataKey="id"
-        [globalFilterFields]="['name', 'date']"
-        styleClass="p-datatable-customers"
-        [rowHover]="true"
-        [rows]="5"
-        [paginator]="true"
-        [filterDelay]="0"
-      >
-        <ng-template pTemplate="caption">
-          <div
-            class="flex flex-row justify-content-between align-items-center md:flex-row md:justify-content-between table-header"
-          >
-            <div
-              class="flex flex-row justify-content-right align-items-center w-30 item"
-            >
-              <span class="p-input-icon-left w-full">
+    <div class="card">
+        <p-card>
+            <h3>Lista de sorteios</h3>
+            <p-table #dt [value]="raffles" [tableStyle]="{ 'min-width': '50rem' }" dataKey="id" [globalFilterFields]="['name', 'date']" styleClass="p-datatable-customers" [rowHover]="true" [rows]="5" [paginator]="true" [filterDelay]="0">
+                <ng-template pTemplate="caption">
+                    <div class="flex flex-row justify-content-between align-items-center md:flex-row md:justify-content-between table-header">
+                        <div class="flex flex-row justify-content-right align-items-center w-30 item">
+                            <span class="p-input-icon-left w-full">
                 <i class="pi pi-search"></i>
                 <input
                   type="text"
@@ -112,33 +92,30 @@
                   pInputText
                 />
               </span>
-            </div>
-          </div>
-        </ng-template>
-        <ng-template pTemplate="header">
-          <tr>
-            <th>Nome</th>
-            <th>Imagem</th>
-            <th>Preço</th>
-            <th>Bilhetes</th>
-            <th>Data</th>
-          </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-raffles let-columns="raffles">
-          <tr>
-            <td>{{ raffles.name }}</td>
-            <td>
-              <img
-                style="height: 30px; width: 50px"
-                src="../assets/images/no-image.jpg"
-              />
-            </td>
-            <td>{{ raffles.price | currency : "BRL" }}</td>
-            <td>{{ raffles.tickets }}</td>
-            <td>{{ raffles.date }}</td>
-          </tr>
-        </ng-template>
-      </p-table>
-    </p-card>
-  </div>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>Nome</th>
+                        <th>Imagem</th>
+                        <th>Preço</th>
+                        <th>Bilhetes</th>
+                        <th>Data</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-raffles let-columns="raffles">
+                    <tr>
+                        <td>{{ raffles.name }}</td>
+                        <td>
+                            <img style="height: 30px; width: 50px" src="../assets/images/no-image.jpg" />
+                        </td>
+                        <td>{{ raffles.price | currency : "BRL" }}</td>
+                        <td>{{ raffles.tickets }}</td>
+                        <td>{{ raffles.date }}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </p-card>
+    </div>
 </div>

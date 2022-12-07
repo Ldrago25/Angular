@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Data, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MenuItem } from 'primeng/api';
+import { MenuService } from 'src/menu-module/menu-component-module.service';
+import { AppComponent } from 'src/app/app.component';
 
 interface Raffle {
   name: string;
@@ -22,9 +24,11 @@ export class RafflesUserComponent implements OnInit {
   arrayTick: number[] = [];
   arraySelecteds: number[] = [];
   priceTotal: number = 0;
-  constructor() {}
+  constructor(private menuService: MenuService, private app:AppComponent) {}
 
   ngOnInit(): void {
+    this.app.className='';
+    this.menuService.changeshowMenu=false;
     this.chargeTickets();
   }
 

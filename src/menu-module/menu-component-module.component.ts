@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Data, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MenuItem } from 'primeng/api';
+import { MenuService } from './menu-component-module.service';
 
 @Component({
   selector: 'app-menu',
@@ -33,9 +34,24 @@ export class MenuComponent implements OnInit {
     },
   ];
 
-  constructor() {}
+  showMenuItem:boolean=true;
 
-  ngOnInit(): void {}
+  constructor(private showMenuItems: MenuService,private route:Router) {}
+
+  ngOnInit(): void {
+    this.showMenuItems.showMenu$.subscribe((resp)=>{
+      console.log(resp);
+      this.showMenuItem=resp;
+    });
+
+  }
+
+
+  changeRoute(){
+    console.log('asd');
+    this.route.navigate(['RafflesComponent']);
+  }
+
 
   update3() {}
   update2() {}

@@ -18,6 +18,7 @@ import { TableModule } from 'primeng/table';
 import { PaginatorModule } from 'primeng/paginator';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { DropdownModule } from 'primeng/dropdown';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { DropdownModule } from 'primeng/dropdown';
     BrowserModule,
     AppRoutingModule,
     AutoCompleteModule,
+    HttpClientModule,
     InputTextModule,
     CardModule,
     InputTextareaModule,
