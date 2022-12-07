@@ -3,6 +3,10 @@ h1 {
   font-family: "Open Sans", sans-serif;
 }
 
+a:link {
+  text-decoration:none;
+}
+
 .sidebar {
   position: fixed;
   top: 0;
