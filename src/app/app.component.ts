@@ -24,6 +24,9 @@ export class AppComponent implements OnInit {
 
       if (event instanceof NavigationEnd) {
         console.log(event.url);
+        if(event.url=='/'){
+          this.className='component';
+        }
         if(event.url=='/RafflesComponent'){
           this.className='component';
         }
