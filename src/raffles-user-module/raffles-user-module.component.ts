@@ -12,6 +12,10 @@ interface Raffle {
   date: string;
 }
 
+interface Image {
+  src: string;
+}
+
 @Component({
   selector: 'app-raffles-user',
   templateUrl: './raffles-user-module.component.html',
@@ -19,16 +23,31 @@ interface Raffle {
 })
 export class RafflesUserComponent implements OnInit {
   price: number = 140;
-  cant: number = 1200;
+  cant: number = 300;
   tickets: number[] = [];
   arrayTick: number[] = [];
   arraySelecteds: number[] = [];
   priceTotal: number = 0;
-  constructor(private menuService: MenuService, private app:AppComponent) {}
+
+  images: Image[] = [
+    {
+      src: 'https://img.remediosdigitales.com/dc72b3/bmw-m-1000-rr-2021-003/840_560.jpg',
+    },
+    {
+      src: 'https://www.mundomotero.com/wp-content/uploads/2018/11/Honda-S-1000-RR-2019.jpg',
+    },
+    {
+      src: 'https://bd.gaadicdn.com/processedimages/bmw/s1000rr/source/v_s1000rr-pro-m-sport1561625847.jpg',
+    },
+    {
+      src: 'https://images.unsplash.com/photo-1635073908681-b4dfbd6015e8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Ym13JTIwczEwMDBycnxlbnwwfHwwfHw%3D&w=1000&q=80',
+    },
+  ];
+  constructor(private menuService: MenuService, private app: AppComponent) {}
 
   ngOnInit(): void {
-    this.app.className='';
-    this.menuService.changeshowMenu=false;
+    this.app.className = '';
+    this.menuService.changeshowMenu = false;
     this.chargeTickets();
   }
 

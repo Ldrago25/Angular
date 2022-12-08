@@ -6,7 +6,18 @@
           <div class="flex flex-row align-items-center">
             <h2>Rifa de moto</h2>
           </div>
-          <div class="w-full image-select"></div>
+          <div>
+            <p-carousel
+              styleClass="custom-carousel"
+              [value]="images"
+              [numVisible]="1"
+              [numScroll]="1"
+            >
+              <ng-template let-image pTemplate="item">
+                <img class="w-full image-select" [src]="image.src" />
+              </ng-template>
+            </p-carousel>
+          </div>
         </div>
         <div class="col mt-6 ml-3">
           <div>

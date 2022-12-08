@@ -5,6 +5,11 @@ import { AppComponent } from 'src/app/app.component';
 
 interface Participant {
   name: string;
+  cpf: string;
+  email: string;
+  phone: string;
+  cepi: string;
+  address: string;
   raffle: string;
   numTickets: number;
   totalPay: number;
@@ -33,34 +38,59 @@ export class ParticipantComponent implements OnInit {
     this.participants = [
       {
         name: 'Pedro Rivera',
+        cpf: "CPFEXAMPLE",
+        email: "example@email.com",
+        phone: "+55 999 9999",
+        cepi: "5001",
+        address: "Direccion de ejemplo",
         raffle: "Rifa de moto",
         numTickets: 3,
         totalPay: 500,
         date: new Date().toLocaleDateString('es'),
       },
       {
-        name: 'Pedro Rivera',
+        name: 'Jose Garcia',
+        cpf: "CPFEXAMPLE",
+        email: "example@email.com",
+        phone: "+55 999 9999",
+        cepi: "5001",
+        address: "Direccion de ejemplo",
         raffle: "Rifa de carro",
         numTickets: 2,
         totalPay: 700,
         date: new Date().toLocaleDateString('es'),
       },
       {
-        name: 'Pedro Rivera',
+        name: 'Esteba Rodriguez',
+        cpf: "CPFEXAMPLE",
+        email: "example@email.com",
+        phone: "+55 999 9999",
+        cepi: "5001",
+        address: "Direccion de ejemplo",
         raffle: "Rifa de casa",
         numTickets: 1,
         totalPay: 800,
         date: new Date().toLocaleDateString('es'),
       },
       {
-        name: 'Pedro Rivera',
+        name: 'Pablo Chacon',
+        cpf: "CPFEXAMPLE",
+        email: "example@email.com",
+        phone: "+55 999 9999",
+        cepi: "5001",
+        address: "Direccion de ejemplo",
         raffle: "Rifa de apartamento",
         numTickets: 4,
         totalPay: 1000,
         date: new Date().toLocaleDateString('es'),
       },
       {
-        name: 'Pedro Rivera',
+        name: 'Juan Sanchez',
+        cpf: "CPFEXAMPLE",
+        email: "example@email.com",
+        phone: "+55 999 9999",
+        cepi: "5001",
+        address: "Direccion de ejemplo",
         raffle: "Rifa de telefono",
         numTickets: 6,
         totalPay: 300,

@@ -19,6 +19,7 @@ import { PaginatorModule } from 'primeng/paginator';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { DropdownModule } from 'primeng/dropdown';
 import { HttpClientModule } from '@angular/common/http';
+import { CarouselModule } from 'primeng/carousel';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { HttpClientModule } from '@angular/common/http';
     PaginatorModule,
     SplitButtonModule,
     DropdownModule,
+    CarouselModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
