@@ -19,17 +19,17 @@ interface Raffle {
       :host ::ng-deep table {
         width: 100%;
       }
+      
     `,
   ],
 })
 export class RafflesComponent implements OnInit {
   raffles: Raffle[] = [];
-
-  constructor(private app:AppComponent) {}
-
+  uploadedFiles: any[] = [];
+  constructor(private app: AppComponent) {}
 
   ngOnInit(): void {
-    this.app.className='component'
+    this.app.className = 'component';
     this.raffles = [
       {
         name: 'Rifa de moto',
@@ -62,5 +62,11 @@ export class RafflesComponent implements OnInit {
         date: new Date().toLocaleDateString('es'),
       },
     ];
+  }
+
+  onUpload(event) {
+    for (let file of event.files) {
+      this.uploadedFiles.push(file);
+    }
   }
 }

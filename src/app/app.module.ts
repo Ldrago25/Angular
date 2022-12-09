@@ -20,6 +20,7 @@ import { SplitButtonModule } from 'primeng/splitbutton';
 import { DropdownModule } from 'primeng/dropdown';
 import { HttpClientModule } from '@angular/common/http';
 import { CarouselModule } from 'primeng/carousel';
+import { FileUploadModule } from 'primeng/fileupload';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { CarouselModule } from 'primeng/carousel';
     SplitButtonModule,
     DropdownModule,
     CarouselModule,
+    FileUploadModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
