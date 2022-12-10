@@ -10,6 +10,10 @@ interface Raffle {
   date: string;
 }
 
+interface upload {
+  images: File[];
+}
+
 @Component({
   selector: 'app-raffles',
   templateUrl: './raffles-module.component.html',
@@ -19,17 +23,21 @@ interface Raffle {
       :host ::ng-deep table {
         width: 100%;
       }
-      
     `,
   ],
 })
 export class RafflesComponent implements OnInit {
   raffles: Raffle[] = [];
-  uploadedFiles: any[] = [];
-  constructor(private app: AppComponent) {}
+  uploadedFiles: upload = { images: [] };
+
+  formData: FormGroup = new FormGroup({});
+
+  constructor(private app: AppComponent, private _form: FormBuilder) {}
 
   ngOnInit(): void {
     this.app.className = 'component';
+
+    this._initForm();
     this.raffles = [
       {
         name: 'Rifa de moto',
@@ -64,9 +72,34 @@ export class RafflesComponent implements OnInit {
     ];
   }
 
-  onUpload(event) {
-    for (let file of event.files) {
-      this.uploadedFiles.push(file);
+  fileOnChange(event: any) {
+    this.uploadedFiles.images = event.currentFiles;
+    console.log(this.uploadedFiles.images);
+  }
+
+  sendData() {
+    const formData: any = new FormData();
+
+    formData.append('name', this.formData.controls['name'].value);
+    formData.append('price', this.formData.controls['price'].value);
+    formData.append('numTicket', this.formData.controls['numberTickets'].value);
+    formData.append('dateGame', this.formData.controls['date'].value);
+    formData.append('description', this.formData.controls['description'].value);
+    formData.append('image', this.uploadedFiles);
+
+    for (var pair of formData.entries()) {
+      console.log(pair[0] + ', ' + pair[1]);
     }
+    console.log(formData);
+  }
+
+  private _initForm() {
+    this.formData = this._form.group({
+      name: ['', [Validators.compose([Validators.required])]],
+      price: ['1', [Validators.compose([Validators.required])]],
+      numberTickets: ['1', [Validators.compose([Validators.required])]],
+      date: ['', [Validators.compose([Validators.required])]],
+      description: ['', [Validators.compose([Validators.required])]],
+    });
   }
 }

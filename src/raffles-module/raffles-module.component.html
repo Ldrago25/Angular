@@ -1,88 +1,118 @@
 <div class="contenedor">
-    <div class="card">
-        <p-card>
-            <h3>Criar novo sorteio</h3>
-            <section class="section-one">
-                <div class="col">
-                    <div class="w-full image-select">
-                        <button pButton type="button" class="boton-add" icon="pi pi-image" label="Adicionar imagem"></button>
-                    </div>
-                    <div class="flex flex-row align-items-center mt-5 mb-3">
-                        <span class="p-float-label w-full">
-              <input class="w-full" name="name" type="text" pInputText />
-              <label for="name">Nome do sorteio</label></span
+  <div class="card w-full">
+    <p-card>
+      <form [formGroup]="formData">
+        <h3>Criar novo sorteio</h3>
+        <section class="section-one">
+          <div class="col">
+            <p-fileUpload
+              name="demo[]"
+              chooseLabel="Adicionar imagem"
+              (onSelect)="fileOnChange($event)"
+              multiple="multiple"
+              accept="image/*"
+              previewWidth="100"
+              [showUploadButton]="false"
+              [showCancelButton]="false"
             >
-          </div>
-        </div>
-        <div class="col">
-          <div class="flex flex-row align-items-center">
-            <span class="p-float-label w-full">
-              <p-inputNumber
-                class="w-full"
-                styleClass="w-full"
-                name="price"
-                mode="currency"
-                [showButtons]="true"
-                currency="BRL"
-              ></p-inputNumber>
-              <label for="price">Preço do bilhete</label>
-            </span>
-                    </div>
-                    <div class="flex flex-row align-items-center mt-5">
-                        <span class="p-float-label w-full">
-              <p-inputNumber
-                class="w-full"
-                styleClass="w-full"
-                mode="decimal"
-                [showButtons]="true"
-                name="numberTickets"
-                [min]="1"
-                [max]="10000"
+            </p-fileUpload>
+
+            <div class="flex flex-row align-items-center mt-5 mb-3">
+              <span class="p-float-label w-full">
+                <input class="w-full" name="name" type="text" formControlName="name" pInputText />
+                <label for="name">Nome do sorteio</label></span
               >
-              </p-inputNumber>
-              <label for="numberTickets">Número de bilhetes</label>
-            </span>
-                    </div>
-                    <div class="flex flex-row align-items-center mt-5">
-                        <span class="p-float-label w-full">
-              <p-calendar
-                class="w-full"
-                styleClass="w-full"
-                [showIcon]="true"
-                name="date"
-              ></p-calendar>
-              <label for="date">Data do sorteio</label>
-            </span>
-                    </div>
-                    <div class="flex flex-row align-items-center mt-5">
-                        <span class="p-float-label w-full">
-              <textarea
-                name="description"
-                [rows]="7"
-                class="w-full h-full"
-                pInputTextarea
-              ></textarea>
-              <label for="description">Descrição</label>
-            </span>
-                    </div>
-                </div>
-            </section>
-            <div class="flex flex-row justify-content-end mt-5 mr-2">
-                <button pButton label="Criar sorteio"></button>
             </div>
-        </p-card>
-    </div>
+          </div>
+          <div class="col">
+            <div class="flex flex-row align-items-center">
+              <span class="p-float-label w-full">
+                <p-inputNumber
+                  class="w-full"
+                  styleClass="w-full"
+                  name="price"
+                  mode="currency"
+                  [showButtons]="true"
+                  currency="BRL"
+                  formControlName="price"
+                ></p-inputNumber>
+                <label for="price">Preço do bilhete</label>
+              </span>
+            </div>
+            <div class="flex flex-row align-items-center mt-5">
+              <span class="p-float-label w-full">
+                <p-inputNumber
+                  class="w-full"
+                  styleClass="w-full"
+                  mode="decimal"
+                  [showButtons]="true"
+                  name="numberTickets"
+                  [min]="1"
+                  [max]="10000"
+                  formControlName="numberTickets"
+                  >
+                </p-inputNumber>
+                <label for="numberTickets">Número de bilhetes</label>
+              </span>
+            </div>
+            <div class="flex flex-row align-items-center mt-5">
+              <span class="p-float-label w-full">
+                <p-calendar
+                  class="w-full"
+                  styleClass="w-full"
+                  [showIcon]="true"
+                  name="date"
+                  formControlName="date"
+                ></p-calendar>
+                <label for="date">Data do sorteio</label>
+              </span>
+            </div>
+            <div class="flex flex-row align-items-center mt-5">
+              <span class="p-float-label w-full">
+                <textarea
+                  name="description"
+                  [rows]="7"
+                  class="w-full h-full"
+                  formControlName="description"
+                  pInputTextarea
+                ></textarea>
+                <label for="description">Descrição</label>
+              </span>
+            </div>
+          </div>
+        </section>
+        <div class="flex flex-row justify-content-end mt-5 mr-2">
+          <button pButton label="Criar sorteio" (click)="sendData()"></button>
+        </div>
+      </form>
+    </p-card>
+  </div>
 </div>
 
 <div class="contenedor">
-    <div class="card">
-        <p-card>
-            <h3>Lista de sorteios</h3>
-            <p-table #dt [value]="raffles" [tableStyle]="{ 'min-width': '50rem' }" dataKey="id" [globalFilterFields]="['name', 'date']" styleClass="p-datatable-customers" [rowHover]="true" [rows]="5" [paginator]="true" [filterDelay]="0">
-                <ng-template pTemplate="caption">
-                    <div class="flex flex-row justify-content-between align-items-center md:flex-row md:justify-content-between table-header">
-                        <div class="flex flex-row justify-content-right align-items-center w-30 item">
-                            <span class="p-input-icon-left w-full">
+  <div class="card">
+    <p-card>
+      <h3>Lista de sorteios</h3>
+      <p-table
+        #dt
+        [value]="raffles"
+        [tableStyle]="{ 'min-width': '50rem' }"
+        dataKey="id"
+        [globalFilterFields]="['name', 'date']"
+        styleClass="p-datatable-customers"
+        [rowHover]="true"
+        [rows]="5"
+        [paginator]="true"
+        [filterDelay]="0"
+      >
+        <ng-template pTemplate="caption">
+          <div
+            class="flex flex-row justify-content-between align-items-center md:flex-row md:justify-content-between table-header"
+          >
+            <div
+              class="flex flex-row justify-content-right align-items-center w-30 item"
+            >
+              <span class="p-input-icon-left w-full">
                 <i class="pi pi-search"></i>
                 <input
                   type="text"
@@ -92,30 +122,28 @@
                   pInputText
                 />
               </span>
-                        </div>
-                    </div>
-                </ng-template>
-                <ng-template pTemplate="header">
-                    <tr>
-                        <th>Nome</th>
-                        <th>Imagem</th>
-                        <th>Preço</th>
-                        <th>Bilhetes</th>
-                        <th>Data</th>
-                    </tr>
-                </ng-template>
-                <ng-template pTemplate="body" let-raffles let-columns="raffles">
-                    <tr>
-                        <td>{{ raffles.name }}</td>
-                        <td>
-                            <img style="height: 30px; width: 50px" src="../assets/images/no-image.jpg" />
-                        </td>
-                        <td>{{ raffles.price | currency : "BRL" }}</td>
-                        <td>{{ raffles.tickets }}</td>
-                        <td>{{ raffles.date }}</td>
-                    </tr>
-                </ng-template>
-            </p-table>
-        </p-card>
-    </div>
+            </div>
+          </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Nome</th>
+            <th>Imagem</th>
+            <th>Preço</th>
+            <th>Bilhetes</th>
+            <th>Data</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-raffles let-columns="raffles">
+          <tr>
+            <td>{{ raffles.name }}</td>
+            <td>Image</td>
+            <td>{{ raffles.price | currency : "BRL" }}</td>
+            <td>{{ raffles.tickets }}</td>
+            <td>{{ raffles.date }}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </p-card>
+  </div>
 </div>
