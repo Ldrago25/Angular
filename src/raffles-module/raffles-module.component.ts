@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Data, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AppComponent } from 'src/app/app.component';
+import { RafflesService } from './raffles-module.component.service';
 
 interface Raffle {
   name: string;
@@ -29,10 +30,11 @@ interface upload {
 export class RafflesComponent implements OnInit {
   raffles: Raffle[] = [];
   uploadedFiles: upload = { images: [] };
+  files:File[]=[];
 
   formData: FormGroup = new FormGroup({});
 
-  constructor(private app: AppComponent, private _form: FormBuilder) {}
+  constructor(private app: AppComponent, private _form: FormBuilder, private _serviceRaffles:RafflesService) {}
 
   ngOnInit(): void {
     this.app.className = 'component';
@@ -73,8 +75,7 @@ export class RafflesComponent implements OnInit {
   }
 
   fileOnChange(event: any) {
-    this.uploadedFiles.images = event.currentFiles;
-    console.log(this.uploadedFiles.images);
+    this.files = event.currentFiles;
   }
 
   sendData() {
@@ -85,12 +86,16 @@ export class RafflesComponent implements OnInit {
     formData.append('numTicket', this.formData.controls['numberTickets'].value);
     formData.append('dateGame', this.formData.controls['date'].value);
     formData.append('description', this.formData.controls['description'].value);
-    formData.append('image', this.uploadedFiles);
+    this.files.forEach((file) => {  formData.append('image[]', file); });
 
-    for (var pair of formData.entries()) {
-      console.log(pair[0] + ', ' + pair[1]);
-    }
-    console.log(formData);
+    this._serviceRaffles.postLoadRaffle(formData).subscribe((resp)=>{
+
+
+      console.log(resp);
+
+    });
+
+
   }
 
   private _initForm() {
