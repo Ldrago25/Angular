@@ -15,6 +15,16 @@
   min-width: 400px;
 }
 
+.responsive{
+  max-width: 100%;
+  height: auto;
+}
+
+.center{
+  display: block;
+  margin: auto;
+}
+
 .contenedor {
   display: flex;
   flex-direction: row;
@@ -57,13 +67,6 @@
 .image-select {
   border-radius: 20px;
   border: 1px solid rgb(243, 243, 243);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 80%;
-  padding: 0px;
-  margin: 0px;
-  min-height: 400px;
 }
 
 .section-tickets {
@@ -131,7 +134,7 @@
     width: 60px;
     height: 60px;
   }
-
+  
   .section-tickets {
     grid-template-columns: repeat(6, 1fr);
 

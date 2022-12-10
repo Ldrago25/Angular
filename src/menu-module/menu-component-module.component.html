@@ -10,8 +10,8 @@
             </a>
         </div>
 
-        <div class="item mr-2 item-top" *ngIf="showMenuItem">
-            <a routerLink="/ParticipantComponent" class="flex flex-row align-items-center">
+        <div routerLink="/ParticipantComponent" class="item mr-2 item-top" *ngIf="showMenuItem">
+            <a class="flex flex-row align-items-center">
                 <i class="pi pi-users"></i>
                 <span class="links_name">Compradores</span>
             </a>
@@ -26,15 +26,15 @@
 </div>
 <div class="sidebar" *ngIf="showMenuItem">
     <div class="container-sidebar">
-        <div class="item">
-            <a routerLink="/RafflesComponent" class="flex flex-row align-items-center">
+        <div routerLink="/RafflesComponent" class="item">
+            <a class="flex flex-row align-items-center">
                 <i class="pi pi-ticket"></i>
                 <span class="links_name">Sorteios</span>
             </a>
         </div>
 
-        <div class="item mt-3">
-            <a routerLink="ParticipantComponent" class="flex flex-row align-items-center">
+        <div routerLink="ParticipantComponent" class="item mt-3">
+            <a class="flex flex-row align-items-center">
                 <i class="pi pi-users"></i>
                 <span class="links_name">Compradores</span>
             </a>
