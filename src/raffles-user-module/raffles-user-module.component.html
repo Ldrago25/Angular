@@ -14,7 +14,7 @@
               [numScroll]="1"
             >
               <ng-template let-image pTemplate="item">
-                <img class="w-full image-select" [src]="image.src" />
+                <img class="image-select responsive center" [src]="image.src" />
               </ng-template>
             </p-carousel>
           </div>
@@ -50,7 +50,7 @@
 <div class="contenedor">
   <div class="card">
     <p-card>
-      <div class="flex flex-row justify-content-between">
+      <div class="flex flex-column justify-content-between">
         <h2>Selecione seus bilhetes</h2>
         <div>
           <label for="dropOpt">Ver: </label>
