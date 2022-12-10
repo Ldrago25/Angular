@@ -10,7 +10,6 @@
 
 .card {
     padding: 3rem;
-    width: 100%;
     max-width: 1900px;
     min-width: 400px;
 }
@@ -19,20 +18,6 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-}
-
-.image-select {
-    border-radius: 20px;
-    border: 1px solid rgb(243, 243, 243);
-    height: 80%;
-    background-image: url("../assets/images/no-image.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
-    flex-direction: row;
-    justify-content: end;
-    align-items: flex-end;
 }
 
 .boton-add {
@@ -59,9 +44,6 @@
 
     .card {
         padding: 0rem;
-    }
-
-    .image-select {
-        height: 250px;
+        margin: 0px;
     }
 }
