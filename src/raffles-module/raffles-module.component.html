@@ -128,7 +128,6 @@
         <ng-template pTemplate="header">
           <tr>
             <th>Nome</th>
-            <th>Imagem</th>
             <th>Preço</th>
             <th>Bilhetes</th>
             <th>Data</th>
@@ -137,10 +136,9 @@
         <ng-template pTemplate="body" let-raffles let-columns="raffles">
           <tr>
             <td>{{ raffles.name }}</td>
-            <td>Image</td>
             <td>{{ raffles.price | currency : "BRL" }}</td>
-            <td>{{ raffles.tickets }}</td>
-            <td>{{ raffles.date }}</td>
+            <td>{{ raffles.numTicket }}</td>
+            <td>{{ raffles.dateGame }}</td>
           </tr>
         </ng-template>
       </p-table>
