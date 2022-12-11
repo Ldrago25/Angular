@@ -22,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CarouselModule } from 'primeng/carousel';
 import { FileUploadModule } from 'primeng/fileupload';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { RafflesListComponent } from 'src/raffles-list-module/raffles-list-module.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     ParticipantComponent,
     RafflesUserComponent,
     MenuComponent,
+    RafflesListComponent
   ],
   imports: [
     BrowserModule,

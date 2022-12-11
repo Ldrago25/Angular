@@ -6,6 +6,7 @@ import { RafflesListService } from './raffles-list-module.service';
 import { Raffle } from 'src/models/Raffle';
 import * as moment from 'moment';
 import { MenuItem } from 'primeng/api';
+import { MenuService } from 'src/menu-module/menu-component-module.service';
 
 @Component({
   selector: 'app-raffles-list',
@@ -29,16 +30,14 @@ export class RafflesListComponent implements OnInit {
   constructor(
     private app: AppComponent,
     private _form: FormBuilder,
-    private _serviceListRaffles: RafflesListService
+    private _serviceListRaffles: RafflesListService,
+    private menuService: MenuService,
   ) {}
 
   ngOnInit(): void {
-
-    this.app.className = 'component';
-
+    this.app.className = '';
+    this.menuService.changeshowMenu = false;
     this.getRaffles();
-
-    this.raffles = [];
   }
 
   changeID(id: number) {

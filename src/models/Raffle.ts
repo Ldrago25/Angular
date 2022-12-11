@@ -13,7 +13,7 @@ export class Raffle {
     public description?: string,
     public numTicket?: number,
     public price?: number,
-    public date?: string,
-    public image?: Image[]
+    public dateGame?: string,
+    public images?: Image[]
   ) {}
 }

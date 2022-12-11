@@ -48,7 +48,6 @@ export class MenuComponent implements OnInit {
 
 
   changeRoute(){
-    console.log('asd');
     this.route.navigate(['RafflesComponent']);
   }
 
