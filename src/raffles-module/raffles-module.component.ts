@@ -3,17 +3,11 @@ import { Data, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AppComponent } from 'src/app/app.component';
 import { RafflesService } from './raffles-module.component.service';
+import { Raffle } from 'src/models/Raffle';
 
-interface Raffle {
-  name: string;
-  price: number;
-  tickets: number;
-  date: string;
-}
 
-interface upload {
-  images: File[];
-}
+
+
 
 @Component({
   selector: 'app-raffles',
@@ -28,8 +22,8 @@ interface upload {
   ],
 })
 export class RafflesComponent implements OnInit {
-  raffles: Raffle[] = [];
-  uploadedFiles: upload = { images: [] };
+  raffles: Raffle [] = [{}];
+
   files:File[]=[];
 
   formData: FormGroup = new FormGroup({});
@@ -39,38 +33,10 @@ export class RafflesComponent implements OnInit {
   ngOnInit(): void {
     this.app.className = 'component';
 
+    this.getRaffles();
     this._initForm();
     this.raffles = [
-      {
-        name: 'Rifa de moto',
-        price: 200,
-        tickets: 1000,
-        date: new Date().toLocaleDateString('es'),
-      },
-      {
-        name: 'Rifa de carro',
-        price: 300,
-        tickets: 2000,
-        date: new Date().toLocaleDateString('es'),
-      },
-      {
-        name: 'Rifa de telefono',
-        price: 500,
-        tickets: 7000,
-        date: new Date().toLocaleDateString('es'),
-      },
-      {
-        name: 'Rifa de casa',
-        price: 800,
-        tickets: 10000,
-        date: new Date().toLocaleDateString('es'),
-      },
-      {
-        name: 'Rifa de apartamento',
-        price: 1000,
-        tickets: 10000,
-        date: new Date().toLocaleDateString('es'),
-      },
+
     ];
   }
 
@@ -96,6 +62,17 @@ export class RafflesComponent implements OnInit {
     });
 
 
+  }
+
+  getRaffles(){
+    this._serviceRaffles.getRaffles().subscribe((resp)=> {
+      
+      this.raffles = resp;
+
+      console.log(this.raffles);
+      
+
+    })
   }
 
   private _initForm() {
