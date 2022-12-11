@@ -8,16 +8,11 @@ import { Raffle } from 'src/models/Raffle';
 @Injectable({
   providedIn: 'root',
 })
-export class RafflesService {
+export class RafflesListService {
   // -----------------------------------------------------------------------------------------------------
   // @ Accessors
   // -----------------------------------------------------------------------------------------------------
   constructor(private _http: HttpClient) {}
-
-  postLoadRaffle(form: FormData): Observable<Raffle> {
-    const uri = environment.createAndGetUrl;
-    return this._http.post<Raffle>(uri, form).pipe(map((data: any) => data));
-  }
 
   getRaffles(): Observable<Raffle[]> {
     const uri = environment.createAndGetUrl;

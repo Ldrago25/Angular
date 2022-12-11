@@ -19,7 +19,13 @@
 
             <div class="flex flex-row align-items-center mt-5 mb-3">
               <span class="p-float-label w-full">
-                <input class="w-full" name="name" type="text" formControlName="name" pInputText />
+                <input
+                  class="w-full"
+                  name="name"
+                  type="text"
+                  formControlName="name"
+                  pInputText
+                />
                 <label for="name">Nome do sorteio</label></span
               >
             </div>
@@ -50,7 +56,7 @@
                   [min]="1"
                   [max]="10000"
                   formControlName="numberTickets"
-                  >
+                >
                 </p-inputNumber>
                 <label for="numberTickets">Número de bilhetes</label>
               </span>
@@ -127,18 +133,24 @@
         </ng-template>
         <ng-template pTemplate="header">
           <tr>
+            <th>ID</th>
             <th>Nome</th>
             <th>Preço</th>
             <th>Bilhetes</th>
             <th>Data</th>
+            <th>Ações</th>
           </tr>
         </ng-template>
         <ng-template pTemplate="body" let-raffles let-columns="raffles">
           <tr>
+            <td>{{ raffles.id }}</td>
             <td>{{ raffles.name }}</td>
             <td>{{ raffles.price | currency : "BRL" }}</td>
             <td>{{ raffles.numTicket }}</td>
-            <td>{{ raffles.dateGame }}</td>
+            <td>{{ date(raffles.dateGame) }}</td>
+            <td>
+              <p-splitButton (click)="changeID(raffles.id)" label="Ação" [model]="actions"></p-splitButton>
+            </td>
           </tr>
         </ng-template>
       </p-table>
