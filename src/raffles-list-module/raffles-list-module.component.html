@@ -45,11 +45,12 @@
   </div>
 </div>
 
-<ng-container *ngFor="let raffle of raffles; index as i">
-
-    <div *ngIf="i != 0" style="width: 300px; height: 500px;">
-        <img [src]="'http://localhost:8000' + raffle.images[0].path" style="width: 300px; height: 300px;">
-        <h4>{{raffle.name}}</h4>
-        <p>Precio: {{raffle.price}}</p>
+<div class="section-cards">
+  <ng-container *ngFor="let raffle of raffles; index as i">
+    <div *ngIf="i != 0" class="cards-img">
+      <h4 class="grid-price">Precio: {{raffle.price | currency : "BRL"}}</h4>
+      <img [src]="'http://localhost:8000' + raffle.images[0].path" class="img">
+      <h4 class="text-center">{{raffle.name}}</h4>
     </div>
-</ng-container>
+  </ng-container>
+</div>

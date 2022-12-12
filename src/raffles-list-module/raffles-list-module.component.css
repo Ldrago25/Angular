@@ -1,67 +1,109 @@
 .section-one {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.col {
+  width: 50%;
+}
+
+.card {
+  padding: 3rem;
+  width: 100%;
+  max-width: 1900px;
+  min-width: 400px;
+}
+
+.responsive {
+  max-width: 100%;
+  height: auto;
+}
+
+.center {
+  display: block;
+  margin: auto;
+}
+
+.contenedor {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 70px;
+}
+
+.image-select {
+  display: block;
+  border-radius: 20px;
+  border: 1px solid rgb(243, 243, 243);
+}
+
+.section-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 5fr);
+  grid-gap: 5px;
+}
+
+.section-cards .cards-img {
+  width: 300px;
+  margin: 10px;
+  border-radius: 18px;
+  background: #000;
+  color: #FFF;
+  padding: 0px;
+  cursor: pointer;
+  transition: all 400ms ease;
+  font-family: "Open Sans", sans-serif;
+}
+
+.cards-img .img {
+  width: 100%;
+  height: 200px;
+}
+
+.grid-price{
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 6px 6px 6px 8px;
+  background-color: #000000;
+  color: #ffffff;
+  transition: opacity 0.4s ease;
+}
+
+.cards-img:hover {
+  transform: translateY(-3%);
+  box-shadow: 10px 10px 40px rgba(12, 12, 12); 
+}
+
+@media only screen and (max-width: 1000px) {
+  .section-one {
+    flex-direction: column;
+    align-items: center;
     justify-content: space-between;
   }
-  
+
+  .section-cards {
+    grid-template-columns: repeat(2, 5fr);
+  }  
+
   .col {
-    width: 50%;
-  }
-  
-  .card {
-    padding: 3rem;
     width: 100%;
-    max-width: 1900px;
-    min-width: 400px;
   }
-  
-  .responsive{
-    max-width: 100%;
-    height: auto;
-  }
-  
-  .center{
-    display: block;
-    margin: auto;
-  }
-  
-  .contenedor {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: 70px;
+
+  .card {
+    padding: 0rem;
   }
 
   .image-select {
-    display: block;
-    border-radius: 20px;
-    border: 1px solid rgb(243, 243, 243);
+    min-height: 250px;
+    height: 250px;
   }
+}
 
-  @media only screen and (max-width: 560px) {
-
-    .content-img{
-      width: 450px;
-    }
+@media only screen and (max-width: 560px) {
+  .content-img {
+    width: 450px;
   }
+}
 
-  @media only screen and (max-width: 1000px) {
-    .section-one {
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-between;
-    }
-  
-    .col {
-      width: 100%;
-    }
-  
-    .card {
-      padding: 0rem;
-    }
-  
-    .image-select {
-      min-height: 250px;
-      height: 250px;
-    }
-  }

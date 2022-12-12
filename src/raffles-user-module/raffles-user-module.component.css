@@ -151,7 +151,6 @@
     grid-auto-rows: minmax(50px, auto);
   }
   
-
   .content-img{
     width: 450px;
   }
@@ -166,7 +165,6 @@
 
   .section-tickets {
     grid-template-columns: repeat(5, 1fr);
-
     grid-auto-rows: minmax(50px, auto);
   }
 }
