@@ -6,6 +6,7 @@
         <section class="section-one">
           <div class="col">
             <p-fileUpload
+              #fu
               name="demo[]"
               chooseLabel="Adicionar imagem"
               (onSelect)="fileOnChange($event)"
@@ -16,8 +17,29 @@
               [showCancelButton]="false"
             >
             </p-fileUpload>
-
-            <div class="flex flex-row align-items-center mt-5 mb-3">
+            <ng-container *ngIf="send">{{ fu.clear() }}</ng-container>
+            <ng-container *ngIf="edit">
+              <p>Clique para excluir</p>
+              <div class="contenedor-images">
+                <div *ngFor="let image of raffleEdit.images" class="mt-2 w-25">
+                  <img
+                    *ngIf="!findSelect(image.id)"
+                    (click)="select(image.id)"
+                    class="delete-image"
+                    style="width: 100%"
+                    [src]="'http://localhost:8000' + image.path"
+                  />
+                  <img
+                    *ngIf="findSelect(image.id)"
+                    (click)="noSelect(image.id)"
+                    class="deleted-image"
+                    style="width: 100%"
+                    [src]="'http://localhost:8000' + image.path"
+                  />
+                </div>
+              </div>
+            </ng-container>
+            <div class="flex flex-row align-items-center mt-5">
               <span class="p-float-label w-full">
                 <input
                   class="w-full"
@@ -29,9 +51,19 @@
                 <label for="name">Nome do sorteio</label></span
               >
             </div>
+
+            <span
+              *ngIf="
+                formData.controls['name'].touched &&
+                formData.controls['name'].errors
+              "
+              class="label-error mb-5"
+            >
+              Campo obrigatório</span
+            >
           </div>
           <div class="col">
-            <div class="flex flex-row align-items-center">
+            <div class="flex flex-row align-items-center margin-first">
               <span class="p-float-label w-full">
                 <p-inputNumber
                   class="w-full"
@@ -45,6 +77,7 @@
                 <label for="price">Preço do bilhete</label>
               </span>
             </div>
+
             <div class="flex flex-row align-items-center mt-5">
               <span class="p-float-label w-full">
                 <p-inputNumber
@@ -73,6 +106,15 @@
                 <label for="date">Data do sorteio</label>
               </span>
             </div>
+            <span
+              *ngIf="
+                formData.controls['date'].touched &&
+                formData.controls['date'].errors
+              "
+              class="label-error"
+            >
+              Campo obrigatório</span
+            >
             <div class="flex flex-row align-items-center mt-5">
               <span class="p-float-label w-full">
                 <textarea
@@ -85,10 +127,26 @@
                 <label for="description">Descrição</label>
               </span>
             </div>
+            <span
+              *ngIf="
+                formData.controls['description'].touched &&
+                formData.controls['description'].errors
+              "
+              class="label-error"
+            >
+              Campo obrigatório</span
+            >
           </div>
         </section>
         <div class="flex flex-row justify-content-end mt-5 mr-2">
-          <button pButton label="Criar sorteio" (click)="sendData()"></button>
+          <button
+            pButton
+            [label]="edit ? 'Salvar mudanças' : 'Criar sorteio'"
+            (click)="edit ? updateData() : sendData()"
+            [disabled]="
+              formData.valid != true || (this.files.length == 0 && !edit)
+            "
+          ></button>
         </div>
       </form>
     </p-card>
@@ -104,7 +162,7 @@
         [value]="raffles"
         [tableStyle]="{ 'min-width': '50rem' }"
         dataKey="id"
-        [globalFilterFields]="['name', 'date']"
+        [globalFilterFields]="['name', 'dateGame', 'id']"
         styleClass="p-datatable-customers"
         [rowHover]="true"
         [rows]="5"
@@ -149,7 +207,11 @@
             <td>{{ raffles.numTicket }}</td>
             <td>{{ date(raffles.dateGame) }}</td>
             <td>
-              <p-splitButton (click)="changeID(raffles.id)" label="Ação" [model]="actions"></p-splitButton>
+              <p-splitButton
+                (click)="changeID(raffles.id)"
+                label="Ação"
+                [model]="actions"
+              ></p-splitButton>
             </td>
           </tr>
         </ng-template>
