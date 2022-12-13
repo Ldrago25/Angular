@@ -19,6 +19,16 @@ export class RafflesService {
     return this._http.post<Raffle>(uri, form).pipe(map((data: any) => data));
   }
 
+  updateRaffle(form: FormData, id: number): Observable<Raffle> {
+    const uri = environment.createAndGetUrl + '/' + id + '?_method=PUT';
+    return this._http.post<Raffle>(uri, form).pipe(map((data: any) => data));
+  }
+
+  deleteRaffle(id: number) {
+    const uri = environment.createAndGetUrl + '/' + id;
+    return this._http.delete(uri).pipe();
+  }
+
   getRaffles(): Observable<Raffle[]> {
     const uri = environment.createAndGetUrl;
     return this._http.get<Raffle[]>(uri).pipe(map((data: any) => data.data));

@@ -29,6 +29,7 @@ export class RafflesComponent implements OnInit {
   edit: boolean = false;
   raffleEdit: Raffle = {};
   IDsImagesDeleted: number[] = [];
+  emptyImages: boolean = false;
 
   constructor(
     private app: AppComponent,
@@ -42,6 +43,7 @@ export class RafflesComponent implements OnInit {
         label: 'Editar',
         icon: 'pi pi-pencil',
         command: () => {
+          this.clear();
           this.chargeEditForm();
         },
       },
@@ -49,7 +51,7 @@ export class RafflesComponent implements OnInit {
         label: 'Excluir',
         icon: 'pi pi-times',
         command: () => {
-          //delete logic
+          this._deleteRaffle();
         },
       },
     ];
@@ -88,6 +90,20 @@ export class RafflesComponent implements OnInit {
   }
   fileOnChange(event: any) {
     this.files = event.currentFiles;
+
+    if(this.edit){
+      if(this.files.length > 0) {
+        this.emptyImages = false;
+      }
+    }
+  }
+
+  emptyFiles(){
+    if(this.edit){
+      if(this.IDsImagesDeleted.length == this.raffleEdit.images.length && this.files.length == 1) {
+        this.emptyImages = true;
+      }
+    }
   }
 
   sendData() {
@@ -146,13 +162,27 @@ export class RafflesComponent implements OnInit {
         });
       }
 
-      /*this._serviceRaffles.postLoadRaffle(formData).subscribe((resp) => {
-        if (resp) {
-          this.raffles.push(resp);
-          this.send = false;
-          console.log(resp);
-        }
-      });*/
+      if (this.IDsImagesDeleted.length > 0) {
+        this.IDsImagesDeleted.forEach((id) => {
+          formData.append('deleteIds[]', id);
+        });
+      } else {
+        formData.append('deleteIds[]', []);
+      }
+
+      this._serviceRaffles
+        .updateRaffle(formData, this.auxIDRaffles)
+        .subscribe((resp) => {
+          if (resp) {
+            for (let i = 0; i < this.raffles.length; i++) {
+              if (this.raffles[i].id == this.auxIDRaffles) {
+                this.raffles[i] = resp;
+              }
+            }
+            this.send = false;
+            console.log(resp);
+          }
+        });
 
       console.log('updated');
 
@@ -206,13 +236,27 @@ export class RafflesComponent implements OnInit {
     });
   }
 
+  private _deleteRaffle() {
+    this._serviceRaffles.deleteRaffle(this.auxIDRaffles).subscribe((resp) => {
+      this.raffles = this.raffles.filter(
+        (raff) => raff.id != this.auxIDRaffles
+      );
+    });
+  }
+
   select(ID: number) {
     this.IDsImagesDeleted.push(ID);
+
+    if(this.IDsImagesDeleted.length == this.raffleEdit.images.length && this.files.length == 0) {
+      this.emptyImages = true;
+    }
+
     console.log(this.IDsImagesDeleted);
   }
 
   noSelect(ID: number) {
     this.IDsImagesDeleted = this.IDsImagesDeleted.filter((id) => id != ID);
+    this.emptyImages = false;
     console.log(this.IDsImagesDeleted);
   }
 
@@ -223,5 +267,20 @@ export class RafflesComponent implements OnInit {
       }
     }
     return false;
+  }
+
+  clean() {
+    this.IDsImagesDeleted = [];
+    this._initForm();
+    this.edit = false;
+    this.clear();
+  }
+
+  clear() {
+    this.send = true;
+
+    setTimeout(() => {
+      this.send = false;
+    }, 2000);
   }
 }

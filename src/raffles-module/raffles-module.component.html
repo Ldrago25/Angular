@@ -15,10 +15,14 @@
               previewWidth="100"
               [showUploadButton]="false"
               [showCancelButton]="false"
+              (onRemove)="emptyFiles()"
             >
             </p-fileUpload>
             <ng-container *ngIf="send">{{ fu.clear() }}</ng-container>
             <ng-container *ngIf="edit">
+              <span *ngIf="emptyImages" class="label-error"
+                >Você deve carregar pelo menos uma imagem</span
+              >
               <p>Clique para excluir</p>
               <div class="contenedor-images">
                 <div *ngFor="let image of raffleEdit.images" class="mt-2 w-25">
@@ -141,10 +145,17 @@
         <div class="flex flex-row justify-content-end mt-5 mr-2">
           <button
             pButton
+            label="Cancelar"
+            class="p-button-danger mr-2"
+            (click)="clean()"
+            *ngIf="edit"
+          ></button>
+          <button
+            pButton
             [label]="edit ? 'Salvar mudanças' : 'Criar sorteio'"
             (click)="edit ? updateData() : sendData()"
             [disabled]="
-              formData.valid != true || (this.files.length == 0 && !edit)
+              formData.valid != true || (this.files.length == 0 && !edit) || emptyImages
             "
           ></button>
         </div>
@@ -208,9 +219,10 @@
             <td>{{ date(raffles.dateGame) }}</td>
             <td>
               <p-splitButton
-                (click)="changeID(raffles.id)"
+                (onDropdownClick)="changeID(raffles.id)"
                 label="Ação"
                 [model]="actions"
+                [disabled]="edit"
               ></p-splitButton>
             </td>
           </tr>
