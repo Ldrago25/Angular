@@ -35,7 +35,7 @@ export class RafflesListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.app.className = '';
+    this.app.className = 'no-menu-component';
     this.menuService.changeshowMenu = false;
     this.getRaffles();
   }

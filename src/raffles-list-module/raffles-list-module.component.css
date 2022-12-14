@@ -18,7 +18,7 @@
 
 .section-cards {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   column-gap: 10px;
   row-gap: 20px;
   justify-items: center;
@@ -49,7 +49,8 @@
 .grid-price{
   position: relative;
   bottom: 210px;
-  left: 265px;
+  margin-right: 15px;
+  float: right;
   padding: 6px 6px 6px 8px;
   background-color: #000000;
   color: #ffffff;
@@ -64,20 +65,41 @@
   bottom: 25px;
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1800px) {
   .section-cards {
-    grid-template-columns: repeat(2, 5fr);
+    grid-template-columns: repeat(3, 1fr);
   }  
 
 }
 
-@media only screen and (max-width: 630px) {
+
+@media only screen and (max-width: 1400px) {
   .section-cards {
-    grid-template-columns: repeat(1, 5fr);
+    grid-template-columns: repeat(2, 1fr);
+  }  
+
+}
+
+@media only screen and (max-width: 950px) {
+  .section-cards {
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 
-@media only screen and (max-width: 560px) {
+@media only screen and (max-width: 520px) {
+  .cards {
+    width: 300px;
+  }
 
+  .cards-img .img {
+    height: 200px;
+  }
+
+  .grid-price{
+
+    bottom: 180px;
+    left: 0px;
+    float: right;
+  }
 }
 

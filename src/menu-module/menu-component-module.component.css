@@ -11,7 +11,7 @@ a:link {
   position: fixed;
   top: 0;
   height: 100%;
-  width: 200px;
+  width: 20vh;
   background: #0f0f0f;
   padding: 6px 14px;
   z-index: 99;
@@ -64,7 +64,7 @@ a:link {
 .bar-top {
   z-index: 10000;
   position: fixed;
-  height: 80px;
+  height: 10vh;
   width: 100%;
   background-color: #0f0f0f;
 }
@@ -75,7 +75,7 @@ a:link {
 }
 
 .container-sidebar {
-  margin-top: 150px;
+  margin-top: 15vh;
 }
 
 .item-top {

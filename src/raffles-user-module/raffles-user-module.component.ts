@@ -46,7 +46,7 @@ export class RafflesUserComponent implements OnInit {
   constructor(private menuService: MenuService, private app: AppComponent) {}
 
   ngOnInit(): void {
-    this.app.className = '';
+    this.app.className = 'no-menu-component';
     this.menuService.changeshowMenu = false;
     this.chargeTickets();
   }

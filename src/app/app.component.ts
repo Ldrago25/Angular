@@ -9,7 +9,7 @@ import { MenuService } from 'src/menu-module/menu-component-module.service';
 })
 export class AppComponent implements OnInit {
   title = 'rifas-app';
-  className:String='';
+  className:String='no-menu-component';
   /**
     @DefaultConstruct
   */
