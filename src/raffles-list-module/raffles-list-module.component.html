@@ -21,9 +21,6 @@
                 <h4>{{ raffle.name }}</h4>
               </div>
               <div>
-                <p>{{ raffles[0].description }}</p>
-              </div>
-              <div>
                 <h4 class="uppercase font-semibold">Data do sorteio</h4>
                 <p class="text-lg">{{ date(raffles[0].dateGame) }}</p>
               </div>
@@ -33,7 +30,7 @@
                   pRipple
                   type="button"
                   label="Ver sorteio"
-                  class="p-button-outlined p-button-rounded p-button-secondary"
+                  class="p-button-raised"
                 ></button>
               </div>
             </div>
