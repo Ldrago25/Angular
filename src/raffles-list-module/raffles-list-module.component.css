@@ -4,15 +4,12 @@
   justify-content: space-between;
 }
 
-.col {
-  width: 50%;
-}
-
-.card {
-  padding: 3rem;
-  width: 100%;
-  max-width: 1900px;
-  min-width: 400px;
+.title-section{
+  margin-bottom: 3rem;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: "Open Sans", sans-serif;
 }
 
 .responsive {
@@ -26,10 +23,13 @@
 }
 
 .contenedor {
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: center;
   margin-top: 70px;
+  padding: 3rem;
+  align-items: center;
 }
 
 .image-select {
@@ -40,41 +40,57 @@
 
 .section-cards {
   display: grid;
-  grid-template-columns: repeat(4, 5fr);
-  grid-gap: 5px;
+  grid-template-columns: repeat(3, 5fr);
+  column-gap: 10px;
+  row-gap: 15px;
+  justify-items: center;
 }
 
-.section-cards .cards-img {
-  width: 300px;
+.cards{
+  width: 400px;
   margin: 10px;
+  box-shadow: 0 12px 24px 0 rgba(0,0,0,0.2);
   border-radius: 18px;
-  background: #000;
-  color: #FFF;
   padding: 0px;
   cursor: pointer;
   transition: all 400ms ease;
   font-family: "Open Sans", sans-serif;
 }
 
+
 .cards-img .img {
   width: 100%;
-  height: 200px;
+  height: 250px;
+  border-radius: 2rem;
+  padding: 15px;
 }
 
-.grid-price{
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 6px 6px 6px 8px;
-  background-color: #000000;
-  color: #ffffff;
-  transition: opacity 0.4s ease;
-}
-
-.cards-img:hover {
+.cards:hover {
   transform: translateY(-3%);
   box-shadow: 10px 10px 40px rgba(12, 12, 12); 
 }
+.grid-price{
+  position: relative;
+  bottom: 210px;
+  left: 265px;
+  padding: 6px 6px 6px 8px;
+  background-color: #000000;
+  color: #ffffff;
+
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.position-card-content {
+  position: relative;
+  margin: 0;
+  bottom: 25px;
+}
+
+.text-style{
+  text-transform: uppercase;
+}
+
 
 @media only screen and (max-width: 1000px) {
   .section-one {
@@ -98,6 +114,12 @@
   .image-select {
     min-height: 250px;
     height: 250px;
+  }
+}
+
+@media only screen and (max-width: 630px) {
+  .section-cards {
+    grid-template-columns: repeat(1, 5fr);
   }
 }
 

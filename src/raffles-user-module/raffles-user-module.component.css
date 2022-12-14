@@ -75,6 +75,7 @@
   grid-template-columns: repeat(10, 1fr);
   gap: 10px;
   grid-auto-rows: minmax(100px, auto);
+  justify-items: center;
 }
 
 @media only screen and (max-width: 1000px) {

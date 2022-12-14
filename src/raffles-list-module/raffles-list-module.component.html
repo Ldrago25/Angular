@@ -1,56 +1,49 @@
 <div class="contenedor">
   <div class="card">
-    <p-card>
-      <section class="section-one">
-        <div class="col">
-          <div class="flex flex-row align-items-center">
-            <h2>{{ raffles[0].name }}</h2>
-          </div>
-          <div class="content-img">
-            <p-carousel
-              styleClass="custom-carousel"
-              [value]="raffles[0].images"
-              [numVisible]="1"
-              [numScroll]="1"
-            >
-              <ng-template let-image pTemplate="item">
-                <img
-                  class="image-select responsive center"
-                  [src]="'http://localhost:8000' + image.path"
-                />
-              </ng-template>
-            </p-carousel>
-          </div>
+    <section class="section-one">
+      <div>
+        <div class="text-center title-section">
+          <span>Selecione o torneio que deseja participar</span>
         </div>
-        <div class="col mt-6 ml-3">
-          <div>
-            <h4>Preço do bilhete:</h4>
-            <p>{{ raffles[0].price | currency : "BRL" }}</p>
-          </div>
-          <div>
-            <h4>Número de bilhetes:</h4>
-            <p>{{ raffles[0].numTicket }}</p>
-          </div>
-          <div>
-            <h4>Data do sorteio:</h4>
-            <p>{{ date(raffles[0].dateGame) }}</p>
-          </div>
-          <div>
-            <h4>Descrição:</h4>
-            <p>{{ raffles[0].description }}</p>
-          </div>
+        <div class="section-cards">
+          <ng-container *ngFor="let raffle of raffles; index as i">
+            <div *ngIf="i != 0" class="cards">
+              <div class="cards-img">
+                <div>
+                  <img
+                    [src]="'http://localhost:8000' + raffle.images[0].path"
+                    class="img"
+                  />
+                  <span class="grid-price"
+                    >Precio: {{ raffle.price | currency : "BRL" }}</span
+                  >
+                </div>
+                <div class="text-center position-card-content">
+                  <div class="uppercase text-lg font-semibold">
+                    <h4>{{ raffle.name }}</h4>
+                  </div>
+                  <div>
+                    <p>{{ raffles[0].description }}</p>
+                  </div>
+                  <div>
+                    <h4 class="uppercase font-semibold">Data do sorteio</h4>
+                    <p class="text-lg">{{ date(raffles[0].dateGame) }}</p>
+                  </div>
+                  <div class="">
+                    <button
+                      pButton
+                      pRipple
+                      type="button"
+                      label="Ver sorteio"
+                      class="p-button-outlined p-button-rounded p-button-secondary"
+                    ></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-container>
         </div>
-      </section>
-    </p-card>
+      </div>
+    </section>
   </div>
-</div>
-
-<div class="section-cards">
-  <ng-container *ngFor="let raffle of raffles; index as i">
-    <div *ngIf="i != 0" class="cards-img">
-      <h4 class="grid-price">Precio: {{raffle.price | currency : "BRL"}}</h4>
-      <img [src]="'http://localhost:8000' + raffle.images[0].path" class="img">
-      <h4 class="text-center">{{raffle.name}}</h4>
-    </div>
-  </ng-container>
 </div>
